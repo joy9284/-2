@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>叮咚!電子卡片來了</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: "Noto Sans TC", sans-serif;
+    }
+    img {
+      max-width: 90%;
+      max-height: 90vh;
+      cursor: pointer;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <img id="gallery" src="1.gif" alt="是卡片" />
+
+  <script>
+    const images = ["1.gif", "2.gif", "3.gif", "4.gif", "5.gif", "6.gif"];
+    let index = 0;
+
+    document.getElementById("gallery").addEventListener("click", () => {
+      index = (index + 1) % images.length;
+      document.getElementById("gallery").src = images[index];
+    });
+  </script>
+</body>
+</html>
