@@ -2,38 +2,50 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>叮咚!電子卡片來了</title>
+  <title>Toxun</title>
   <style>
     body {
       margin: 0;
-      background-color: #ffffff;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      font-family: "Noto Sans TC", sans-serif;
+      background: #000;
     }
     img {
-      max-width: 90%;
-      max-height: 90vh;
+      max-width: 100%;
+      max-height: 100%;
       cursor: pointer;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      opacity: 0;
+      transition: opacity 1.5s ease; /* 淡入效果 */
+    }
+    img.show {
+      opacity: 1;
     }
   </style>
 </head>
 <body>
-  <img id="gallery" src="1.gif" alt="是卡片" />
+  <img id="card" src="img1.jpg" alt="電子卡片">
 
   <script>
-    const images = ["1.gif", "2.gif", "3.gif", "4.gif", "5.gif", "6.gif"];
+    const images = ["img1.jpg", "img2.jpg", "img3.jpg"];
     let index = 0;
+    const card = document.getElementById("card");
 
-    document.getElementById("gallery").addEventListener("click", () => {
-      index = (index + 1) % images.length;
-      document.getElementById("gallery").src = images[index];
+    // 頁面載入後觸發淡入效果
+    window.onload = () => {
+      card.classList.add("show");
+    };
+
+    card.addEventListener("click", () => {
+      if (index < images.length - 1) {
+        index++;
+        card.src = images[index];
+        // 換圖之後保持直接顯示，不再做淡入
+        card.classList.add("show");
+      }
     });
   </script>
 </body>
 </html>
+
